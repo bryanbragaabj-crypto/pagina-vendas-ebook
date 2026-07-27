@@ -1,0 +1,2 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{font-family:'Inter',sans-serif;color:#f1ece3;background:#050505;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{min-width:320px;min-height:100vh;background:#050505;font-family:'Inter',sans-serif;font-weight:400}img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button,a{-webkit-tap-highlight-color:transparent}#root,main{width:100%;min-height:100vh}
