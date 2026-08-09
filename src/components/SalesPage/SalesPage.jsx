@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ProductMockup } from '../HeroSection/HeroSection.jsx'
 import { faqItems, product, steps, trackCtaClick } from '../../data/siteData.js'
 
@@ -84,7 +84,43 @@ export function BookPreviewSection() {
 }
 
 export function AudiobookSection() {
-  return <section className="audiobook section"><div className="shell audiobook__grid"><div className="audiobook__visual" aria-label="Representação conceitual do audiobook incluído"><ProductMockup compact loading="lazy" /><div className="audio-player"><Icon name="headphones" /><span>Audiobook profissional</span><span className="audio-player__play" aria-hidden="true"><Icon name="play" /></span><i><b /><b /><b /><b /><b /><b /><b /></i></div><strong>Audiobook incluído</strong></div><div className="audiobook__copy"><p className="eyebrow">Bônus exclusivo</p><h2>Leia quando puder.<br />Ouça quando quiser.</h2><p>Ao adquirir o e-book, você também recebe o audiobook profissional completo para acompanhar o método durante sua rotina.</p><ul><li>Conteúdo completo em áudio</li><li>Acesso pelo celular</li><li>Revisão prática dos conceitos</li></ul></div></div></section>
+  const audioRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
+
+  const formatTime = (seconds) => {
+    if (!Number.isFinite(seconds)) return '0:00'
+    const minutes = Math.floor(seconds / 60)
+    return `${minutes}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`
+  }
+
+  const toggleAudio = async () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (audio.paused) {
+      try {
+        await audio.play()
+        setIsPlaying(true)
+      } catch {
+        setIsPlaying(false)
+      }
+    } else {
+      audio.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  const seekAudio = (event) => {
+    const nextTime = Number(event.target.value)
+    if (!audioRef.current) return
+    audioRef.current.currentTime = nextTime
+    setCurrentTime(nextTime)
+  }
+
+  const progress = duration ? (currentTime / duration) * 100 : 0
+
+  return <section className="audiobook section"><div className="shell audiobook__grid"><div className="audiobook__visual" aria-label="Representação conceitual do audiobook incluído"><ProductMockup compact loading="lazy" /><div className={`audio-player${isPlaying ? ' is-playing' : ''}`} onClick={(event) => event.stopPropagation()}><Icon name="headphones" /><span>Audiobook profissional</span><button className="audio-player__play" type="button" aria-label={isPlaying ? 'Pausar prévia do audiobook' : 'Ouvir prévia do audiobook'} onClick={toggleAudio}>{isPlaying ? <span aria-hidden="true" className="audio-player__pause"><b /><b /></span> : <Icon name="play" />}</button><div className="audio-player__progress" style={{ '--audio-progress': `${progress}%` }}><span className="audio-player__wave" aria-hidden="true"><b /><b /><b /><b /><b /><b /><b /></span><span className="audio-player__wave audio-player__wave--fill" aria-hidden="true"><b /><b /><b /><b /><b /><b /><b /></span><input type="range" min="0" max={duration || 0} step="0.01" value={currentTime} onChange={seekAudio} aria-label="Progresso da prévia do audiobook" /></div><small>{formatTime(currentTime)} / {formatTime(duration)}</small><audio ref={audioRef} src="/audio/previa-audiobook-maior-vendedor.mp3" preload="metadata" onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onDurationChange={(event) => Number.isFinite(event.currentTarget.duration) && setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onEnded={(event) => { event.currentTarget.currentTime = 0; setCurrentTime(0); setIsPlaying(false) }} controlsList="nodownload" /></div><strong>Audiobook incluído</strong></div><div className="audiobook__copy"><p className="eyebrow">Bônus exclusivo</p><h2>Leia quando puder.<br />Ouça quando quiser.</h2><p>Ao adquirir o e-book, você também recebe o audiobook profissional completo para acompanhar o método durante sua rotina.</p><ul><li>Conteúdo completo em áudio</li><li>Acesso pelo celular</li><li>Revisão prática dos conceitos</li></ul></div></div></section>
 }
 
 export function AudienceSection() {
