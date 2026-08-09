@@ -3,7 +3,7 @@ import { product, trackCtaClick } from '../../data/siteData.js'
 import './Hero.css'
 
 export function ProductMockup({ compact = false, loading = 'eager' }) {
-  return <img className={`product-mockup${compact ? ' product-mockup--compact' : ''}`} src={mockupEbook} alt={`Mockup do e-book ${product.name}`} width="1122" height="1402" loading={loading} decoding="async" />
+  return <img className={`product-mockup${compact ? ' product-mockup--compact' : ''}`} src={mockupEbook} alt={`Mockup do e-book ${product.name}`} width="1536" height="1024" loading={loading} decoding="async" />
 }
 
 export default function Hero() {
