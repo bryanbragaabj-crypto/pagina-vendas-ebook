@@ -15,8 +15,8 @@ export default function App() {
     <AudiobookSection />
     <AudienceSection />
     <AuthorSection />
-    <TestimonialsSection />
     <ReceiveSection />
+    <TestimonialsSection />
     <OfferSection />
     <GuaranteeSection />
     <FAQSection />

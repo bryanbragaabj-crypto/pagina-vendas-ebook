@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ProductMockup } from '../HeroSection/HeroSection.jsx'
 import { faqItems, product, steps, trackCtaClick } from '../../data/siteData.js'
+import { testimonials } from '../../data/testimonials.js'
 
 const benefits = [
   ['01', 'message', 'Menos discurso', 'Argumentos em excesso geram dúvida. Clareza e perguntas melhores geram confiança.'],
@@ -134,8 +135,50 @@ export function AuthorSection() {
 }
 
 export function TestimonialsSection() {
-  // TODO: inserir somente depoimentos reais e autorizados.
-  return null
+  const trackRef = useRef(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const validTestimonials = testimonials.filter(({ name, text, rating }) => name?.trim() && text?.trim() && Number.isFinite(rating))
+
+  if (!validTestimonials.length) return null
+
+  const averageRating = validTestimonials.reduce((total, item) => total + Math.min(5, Math.max(0, item.rating)), 0) / validTestimonials.length
+
+  const scrollToTestimonial = (index) => {
+    const nextIndex = Math.min(validTestimonials.length - 1, Math.max(0, index))
+    const track = trackRef.current
+    const card = track?.children[nextIndex]
+    if (!track || !card) return
+    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' })
+    setActiveIndex(nextIndex)
+  }
+
+  const updateActiveTestimonial = () => {
+    const track = trackRef.current
+    if (!track?.children.length) return
+    const nearest = [...track.children].reduce((best, card, index) => {
+      const distance = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft)
+      return distance < best.distance ? { index, distance } : best
+    }, { index: 0, distance: Infinity })
+    setActiveIndex(nearest.index)
+  }
+
+  const handleCarouselKeys = (event) => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); scrollToTestimonial(activeIndex - 1) }
+    if (event.key === 'ArrowRight') { event.preventDefault(); scrollToTestimonial(activeIndex + 1) }
+  }
+
+  return <section className="testimonials section" aria-labelledby="testimonials-title"><div className="shell"><div className="section-heading section-heading--center"><p className="eyebrow">Depoimentos</p><h2 id="testimonials-title">Quem leu, entendeu<br /><em>a diferença.</em></h2><p>Experiências reais de leitores que conheceram uma nova forma de enxergar as vendas.</p></div>{validTestimonials.length >= 3 && <div className="testimonials__summary"><RatingStars rating={averageRating} /><strong>{averageRating.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} / 5</strong><span>Baseado em {validTestimonials.length} avaliações</span></div>}<div className="testimonials__track" ref={trackRef} tabIndex="0" onKeyDown={handleCarouselKeys} onScroll={updateActiveTestimonial} aria-label="Depoimentos de leitores">{validTestimonials.map((testimonial, index) => <TestimonialCard key={`${testimonial.name}-${index}`} testimonial={testimonial} />)}</div>{validTestimonials.length > 1 && <div className="testimonials__navigation"><button type="button" aria-label="Depoimento anterior" onClick={() => scrollToTestimonial(activeIndex - 1)} disabled={activeIndex === 0}>←</button><div className="testimonials__dots" aria-label={`Depoimento ${activeIndex + 1} de ${validTestimonials.length}`}>{validTestimonials.map((testimonial, index) => <button type="button" key={`${testimonial.name}-indicator-${index}`} className={index === activeIndex ? 'is-active' : ''} aria-label={`Ir para o depoimento ${index + 1}`} aria-current={index === activeIndex ? 'true' : undefined} onClick={() => scrollToTestimonial(index)} />)}</div><button type="button" aria-label="Próximo depoimento" onClick={() => scrollToTestimonial(activeIndex + 1)} disabled={activeIndex === validTestimonials.length - 1}>→</button></div>}</div></section>
+}
+
+function RatingStars({ rating }) {
+  const normalizedRating = Math.min(5, Math.max(0, Number(rating) || 0))
+  const label = normalizedRating.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+  return <span className="testimonial-stars" role="img" aria-label={`Avaliação: ${label} de 5 estrelas`}><span aria-hidden="true">★★★★★</span><span className="testimonial-stars__fill" style={{ width: `${(normalizedRating / 5) * 100}%` }} aria-hidden="true">★★★★★</span></span>
+}
+
+function TestimonialCard({ testimonial }) {
+  const initials = testimonial.name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase()
+  return <article className={`testimonial-card${testimonial.featured ? ' testimonial-card--featured' : ''}`}>{testimonial.featured && <span className="testimonial-card__featured">Depoimento em destaque</span>}<RatingStars rating={testimonial.rating} /><blockquote>“{testimonial.text}”</blockquote><div className="testimonial-card__author">{testimonial.image ? <img src={testimonial.image} alt="" width="46" height="46" loading="lazy" decoding="async" /> : <span className="testimonial-card__avatar" aria-hidden="true">{initials}</span>}<div><strong>{testimonial.name}</strong>{testimonial.role && <span>{testimonial.role}</span>}{testimonial.verified && <em>✓ Leitor verificado</em>}</div></div></article>
 }
 
 export function ReceiveSection() {
