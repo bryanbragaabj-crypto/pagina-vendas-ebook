@@ -132,6 +132,9 @@
 .hero__labels > span { padding: 7px 10px; border: 1px solid rgba(243,93,61,.25); border-radius: 8px; background: rgba(243,93,61,.07); color: #ff927c; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 .hero__benefits { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 9px 18px; color: #c3bbb0; font-size: 14px; font-weight: 500; }
 .hero__benefits span::first-letter { color: #f35d3d; }
+.hero__authorial { width: fit-content; margin-top: 18px; padding: 9px 12px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(213,163,61,.24); border-radius: 9px; background: rgba(213,163,61,.055); }
+.hero__authorial strong { color: var(--gold-light); font-size: 11px; letter-spacing: .11em; white-space: nowrap; }
+.hero__authorial span { padding-left: 10px; border-left: 1px solid rgba(213,163,61,.2); color: #a9a197; font-size: 11px; line-height: 1.35; }
 .hero__audio-badge { position: absolute; z-index: 4; right: 0; bottom: 105px; min-width: 210px; padding: 13px 16px; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(115,181,196,.25); border-radius: 14px; background: rgba(18,59,70,.94); box-shadow: 0 16px 38px rgba(0,0,0,.3); color: #fff; }
 .hero__audio-badge svg { width: 26px; height: 26px; color: #f0c76a; }
 .hero__audio-badge span { display: flex; flex-direction: column; font-size: 12px; }
@@ -176,6 +179,7 @@
   .hero h1 { max-width: 360px; margin: 13px auto 12px; font-size: clamp(36px,10vw,44px); line-height: 1; }
   .hero__description { max-width: 390px; font-size: 15px; line-height: 1.5; }
   .hero__benefits { display: none; }
+  .hero__authorial { margin-top: 14px; }
   .hero__visual { height: 285px; margin: 8px 0 2px; }
   .hero__visual .product-mockup { width: min(285px,82%); }
   .hero__halo,.hero__visual::before { width: 300px; height: 300px; }
@@ -227,6 +231,9 @@
   .hero__visual .product-mockup { width: min(242px,76%); }
   .hero__halo,.hero__visual::before { width: 255px; height: 255px; }
   .hero__price strong { font-size: 34px; }
+  .hero__authorial { max-width: 330px; padding: 8px 10px; gap: 8px; }
+  .hero__authorial strong { font-size: 10px; }
+  .hero__authorial span { padding-left: 8px; font-size: 10px; }
 }
 
 /* Compensa a proporção horizontal do novo mockup sem cortar a arte. */

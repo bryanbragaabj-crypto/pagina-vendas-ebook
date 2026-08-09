@@ -39,15 +39,15 @@ export function HeaderOffer() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return <header className={`topbar${scrolled ? ' topbar--scrolled' : ''}`}><div className="topbar__inner">
-    <a className="brand" href="#top" aria-label="Ir para o início"><span>Oferta exclusiva por tempo limitado</span></a>
+    <a className="brand" href="#top" aria-label="Ir para o início"><span>E-book + Audiobook Profissional</span></a>
     <p className="topbar__offer">E-book + audiobook profissional</p>
-    <a className="topbar__cta" href={product.checkoutUrl} onClick={() => trackCtaClick('header')}>Garantir agora</a>
+    <a className="topbar__cta" href={product.checkoutUrl} onClick={() => trackCtaClick('header')}>Garantir meu acesso</a>
   </div></header>
 }
 
 export function TrustBar() {
   return <section className="trustbar" aria-label="Informações do produto"><div className="shell trustbar__inner">
-    <span><Icon name="check" />Método prático</span><span><Icon name="building" />Aplicação B2B e B2C</span><span><Icon name="headphones" />Audiobook incluído</span><span><Icon name="shield" />Garantia de 7 dias</span>
+    <span><Icon name="check" />Método prático</span><span><Icon name="building" />Aplicação B2B e B2C</span><span><Icon name="headphones" />Audiobook: bônus exclusivo</span><span><Icon name="shield" />Garantia de 7 dias</span>
   </div></section>
 }
 
@@ -120,7 +120,7 @@ export function AudiobookSection() {
 
   const progress = duration ? (currentTime / duration) * 100 : 0
 
-  return <section className="audiobook section"><div className="shell audiobook__grid"><div className="audiobook__visual" aria-label="Representação conceitual do audiobook incluído"><ProductMockup compact loading="lazy" /><div className="audio-player" onClick={(event) => event.stopPropagation()}><Icon name="headphones" /><span>Audiobook profissional</span><button className="audio-player__play" type="button" aria-label={isPlaying ? 'Pausar prévia do audiobook' : 'Ouvir prévia do audiobook'} onClick={toggleAudio}>{isPlaying ? <span aria-hidden="true" className="audio-player__pause"><b /><b /></span> : <Icon name="play" />}</button><div className="audio-player__progress" style={{ '--audio-progress': `${progress}%` }}><span className="audio-player__wave" aria-hidden="true"><b /><b /><b /><b /><b /><b /><b /></span><span className="audio-player__wave audio-player__wave--fill" aria-hidden="true"><b /><b /><b /><b /><b /><b /><b /></span><input type="range" min="0" max={duration || 0} step="0.01" value={currentTime} onChange={seekAudio} aria-label="Progresso da prévia do audiobook" /></div><small>{formatTime(currentTime)} / {formatTime(duration)}</small><audio ref={audioRef} src="/audio/previa-audiobook-maior-vendedor.mp3" preload="metadata" onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onDurationChange={(event) => Number.isFinite(event.currentTarget.duration) && setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onEnded={(event) => { event.currentTarget.currentTime = 0; setCurrentTime(0); setIsPlaying(false) }} controlsList="nodownload" /></div><strong>Audiobook incluído</strong></div><div className="audiobook__copy"><p className="eyebrow">Bônus exclusivo</p><h2>Leia quando puder.<br />Ouça quando quiser.</h2><p>Ao adquirir o e-book, você também recebe o audiobook profissional completo para acompanhar o método durante sua rotina.</p><ul><li>Conteúdo completo em áudio</li><li>Acesso pelo celular</li><li>Revisão prática dos conceitos</li></ul></div></div></section>
+  return <section className="audiobook section"><div className="shell audiobook__grid"><div className="audiobook__visual" aria-label="Representação conceitual do audiobook incluído"><ProductMockup compact loading="lazy" /><div className="audio-player" onClick={(event) => event.stopPropagation()}><Icon name="headphones" /><span><strong>OUÇA UMA PRÉVIA</strong><em>Trecho exclusivo do audiobook</em></span><button className="audio-player__play" type="button" aria-label={isPlaying ? 'Pausar prévia do audiobook' : 'Ouvir prévia do audiobook'} onClick={toggleAudio}>{isPlaying ? <span aria-hidden="true" className="audio-player__pause"><b /><b /></span> : <Icon name="play" />}</button><div className="audio-player__progress" style={{ '--audio-progress': `${progress}%` }}><span className="audio-player__wave" aria-hidden="true"><b /><b /><b /><b /><b /><b /><b /></span><span className="audio-player__wave audio-player__wave--fill" aria-hidden="true"><b /><b /><b /><b /><b /><b /><b /></span><input type="range" min="0" max={duration || 0} step="0.01" value={currentTime} onChange={seekAudio} aria-label="Progresso da prévia do audiobook" /></div><small>{formatTime(currentTime)} / {formatTime(duration)}</small><audio ref={audioRef} src="/audio/previa-audiobook-maior-vendedor.mp3" preload="metadata" onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onDurationChange={(event) => Number.isFinite(event.currentTarget.duration) && setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onEnded={(event) => { event.currentTarget.currentTime = 0; setCurrentTime(0); setIsPlaying(false) }} controlsList="nodownload" /></div><strong>Audiobook incluído</strong></div><div className="audiobook__copy"><p className="eyebrow">Bônus exclusivo</p><h2>Leia quando puder.<br />Ouça quando quiser.</h2><p>Você recebe o audiobook profissional completo junto com o e-book e pode ouvir uma prévia agora.</p><ul><li>Conteúdo completo em áudio</li><li>Acesso pelo celular</li><li>Revisão prática dos conceitos</li></ul></div></div></section>
 }
 
 export function AudienceSection() {
@@ -139,16 +139,16 @@ export function TestimonialsSection() {
 }
 
 export function ReceiveSection() {
-  const items = [['book','E-book digital completo'],['headphones','Audiobook profissional completo'],['check','Método dos 10 passos'],['spark','Dez gatilhos mentais'],['building','Aplicações em diferentes cenários'],['shield','Garantia de 7 dias']]
+  const items = [['book','E-book completo'],['spark','Arquitetura Invisível das Vendas'],['check','Método estruturado em 10 passos'],['headphones','Audiobook profissional completo — BÔNUS'],['arrow','Acesso imediato']]
   return <section className="receive section"><div className="shell"><div className="section-heading section-heading--center"><p className="eyebrow">Seu kit digital</p><h2>Tudo o que você recebe</h2></div><div className="receive__layout"><ProductMockup compact loading="lazy" /><div className="receive__items">{items.map(([icon,text]) => <span key={text}><Icon name={icon} />{text}</span>)}</div></div></div></section>
 }
 
 export function OfferSection() {
-  return <section className="offer section" id="oferta"><div className="shell offer__box"><div className="offer__product"><ProductMockup compact loading="lazy" /><span>E-book + audiobook • acesso digital</span></div><div className="offer__copy"><p className="eyebrow">Condição especial</p><h2>Leve o método completo para suas próximas negociações.</h2><span className="bonus-label">Bônus: audiobook profissional</span><ul><li>E-book digital completo</li><li>Audiobook profissional completo</li><li>Método dos 10 passos</li><li>10 gatilhos mentais e suas combinações</li><li>Aplicações em B2B e B2C</li><li>Garantia de 7 dias</li></ul><div className="price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><em>{product.paymentType}</em><b>Economize {product.savings}</b></div><a className="gold-button gold-button--wide" id="checkout" href={product.checkoutUrl} onClick={() => trackCtaClick('offer')}>Quero garantir agora</a><p className="secure">Acesso digital • pagamento único • garantia de 7 dias</p><p className="offer__included">Você recebe o e-book e o audiobook completo.</p></div></div></section>
+  return <section className="offer section" id="oferta"><div className="shell offer__box"><div className="offer__product"><ProductMockup compact loading="lazy" /><span>E-book + audiobook • acesso digital</span></div><div className="offer__copy"><p className="eyebrow">Você recebe hoje</p><h2>Leve o método completo para suas próximas negociações.</h2><span className="bonus-label">Bônus exclusivo: audiobook profissional completo</span><ul><li>E-book completo</li><li>Arquitetura Invisível das Vendas</li><li>Método estruturado em 10 passos</li><li>Audiobook profissional completo — BÔNUS</li><li>Acesso imediato</li></ul><div className="price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><em>{product.paymentType}</em><b>Economize {product.savings}</b></div><a className="gold-button gold-button--wide" id="checkout" href={product.checkoutUrl} onClick={() => trackCtaClick('offer')}>Garantir meu acesso</a><p className="secure">Acesso digital • pagamento único • garantia de 7 dias</p><p className="offer__included">Você recebe o e-book e o audiobook profissional completo como bônus exclusivo.</p></div></div></section>
 }
 
 export function GuaranteeSection() {
-  return <section className="guarantee section"><div className="shell guarantee__grid"><div className="guarantee__mark"><strong>7</strong><span>dias</span></div><div><p className="eyebrow">Garantia de satisfação</p><h2>Você tem 7 dias para decidir com tranquilidade.</h2><p>Se você adquirir o material e perceber que ele não faz sentido para você, pode solicitar a devolução total do valor em até 7 dias.</p><strong className="guarantee__note">Sem pressão. A decisão continua sendo sua.</strong>{/* TODO: inserir o link real da política de reembolso quando for fornecido. */}</div></div></section>
+  return <section className="guarantee section"><div className="shell guarantee__grid"><div className="guarantee__mark"><Icon name="shield" /><strong>7</strong><span>dias</span></div><div><p className="eyebrow">Compra protegida</p><h2>Você tem 7 dias para decidir com tranquilidade.</h2><p>Se você adquirir o material e perceber que ele não faz sentido para você, pode solicitar a devolução total do valor em até 7 dias.</p><strong className="guarantee__note">Sem pressão. A decisão continua sendo sua.</strong>{/* TODO: inserir o link real da política de reembolso quando for fornecido. */}</div></div></section>
 }
 
 export function FAQSection() {
@@ -157,7 +157,7 @@ export function FAQSection() {
 }
 
 export function FinalCTA() {
-  return <section className="closing section"><div className="shell"><p className="eyebrow">Sua próxima negociação começa aqui</p><h2>A venda deixa de ser uma batalha<br />e passa a ser <em>uma consequência.</em></h2><p className="closing__support">Leve o e-book, receba o audiobook profissional completo e tenha 7 dias para avaliar o conteúdo com tranquilidade.</p><a className="gold-button" href={product.checkoutUrl} onClick={() => trackCtaClick('final')}>Quero garantir agora</a><small>E-book + audiobook • pagamento único • garantia de 7 dias</small></div></section>
+  return <section className="closing section"><div className="shell"><p className="eyebrow">Sua próxima negociação começa aqui</p><h2>A venda deixa de ser uma batalha<br />e passa a ser <em>uma consequência.</em></h2><p className="closing__support">Leve o e-book, receba o audiobook profissional completo e tenha 7 dias para avaliar o conteúdo com tranquilidade.</p><a className="gold-button" href={product.checkoutUrl} onClick={() => trackCtaClick('final')}>Quero dominar a arte de vender</a><small>E-book + audiobook • pagamento único • garantia de 7 dias</small></div></section>
 }
 
 export function CommercialFooter() {
@@ -177,5 +177,5 @@ export function MobileCTA() {
     update(); window.addEventListener('scroll',update,{ passive:true }); window.addEventListener('resize',update)
     return () => { window.removeEventListener('scroll',update); window.removeEventListener('resize',update) }
   },[])
-  return <div className={`mobile-cta${visible?' is-visible':''}`} aria-hidden={!visible}><div><small>E-book + áudio</small><strong>{product.currentPrice}</strong></div><a href={product.checkoutUrl} tabIndex={visible?0:-1} onClick={() => trackCtaClick('mobile')}>Garantir</a></div>
+  return <div className={`mobile-cta${visible?' is-visible':''}`} aria-hidden={!visible}><div><small>E-book + áudio</small><strong>{product.currentPrice}</strong></div><a href={product.checkoutUrl} tabIndex={visible?0:-1} onClick={() => trackCtaClick('mobile')}>Garantir acesso</a></div>
 }

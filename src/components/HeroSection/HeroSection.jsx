@@ -12,14 +12,15 @@ export default function Hero() {
       <div className="hero__container">
         <div className="hero__content">
           <div className="hero__labels"><p className="eyebrow eyebrow--line">Alta performance comercial</p></div>
-          <h1><span>Torne-se o</span><strong>Maior<br />Vendedor</strong><span>de todos os tempos</span></h1>
-          <p className="hero__description">Um método prático para vender com mais clareza, confiança e menos pressão.</p>
-          <div className="hero__benefits"><span>✓ Método prático</span><span>✓ Aplicação B2B e B2C</span><span>✓ Audiobook incluído</span></div>
+          <h1><span>Aprenda a vender</span><strong>sem precisar<br />convencer.</strong></h1>
+          <p className="hero__description">Descubra a Arquitetura Invisível das Vendas e os 10 passos que conduzem uma negociação da primeira abordagem ao fechamento.</p>
+          <div className="hero__benefits"><span>✓ Método prático</span><span>✓ Aplicação B2B e B2C</span><span>✓ Audiobook como bônus</span></div>
+          <div className="hero__authorial"><strong>100% AUTORAL</strong><span>Obra original. Não gerada por inteligência artificial.</span></div>
         </div>
         <div className="hero__visual"><div className="hero__halo" /><ProductMockup /></div>
         <div className="hero__purchase">
           <div className="hero__price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><b>Economize {product.savings}</b><em>{product.paymentType}</em></div>
-          <a className="gold-button" href={product.checkoutUrl} onClick={() => trackCtaClick('hero')}>Quero garantir agora</a>
+          <a className="gold-button" href="#oferta" onClick={() => trackCtaClick('hero')}>Quero dominar a arte de vender</a>
           <p className="hero__microcopy">E-book + audiobook • acesso digital • garantia de 7 dias</p>
         </div>
       </div>

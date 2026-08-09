@@ -365,7 +365,9 @@ section { scroll-margin-top: 68px; }
 .audiobook__visual > .product-mockup { width: min(430px,95%); }
 .audiobook__visual > strong { position: absolute; left: 5%; top: 8%; padding: 9px 13px; border-radius: 10px; background: var(--coral); color: #fff; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
 .audio-player { position: absolute; z-index: 3; right: 0; bottom: 30px; width: min(290px,62%); padding: 18px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; background: rgba(18,59,70,.94); box-shadow: 0 20px 50px rgba(0,0,0,.36); }
-.audio-player > span { color: #fff; font-size: 14px; font-weight: 600; }
+.audio-player > span { display: flex; flex-direction: column; color: #fff; font-size: 14px; font-weight: 600; }
+.audio-player > span strong { color: #fff; font-size: 11px; line-height: 1.2; letter-spacing: .065em; }
+.audio-player > span em { margin-top: 3px; color: rgba(255,255,255,.58); font-size: 9px; font-style: normal; font-weight: 400; line-height: 1.2; }
 .audio-player__play { width: 42px; height: 42px; padding: 0; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--coral); color: #fff; cursor: pointer; touch-action: manipulation; }
 .audio-player__play .icon { width: auto; height: auto; border: 0; background: none; box-shadow: none; }
 .audio-player__play:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
@@ -448,6 +450,11 @@ section { scroll-margin-top: 68px; }
   .receive__items > span { min-height: 76px; }
   .guarantee__mark { width: 200px; height: 200px; }
   .guarantee__mark strong { font-size: 72px; }
+}
+
+/* Mensagem neutra e verdadeira no cabeçalho compacto. */
+@media (max-width: 768px) {
+  .brand::after { content: 'E-book + Audiobook'; }
 }
 .trustbar { border-block: 1px solid rgba(223,169,54,.11); background: #090806; }
 .trustbar__inner { min-height: 78px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: center; }
@@ -968,4 +975,8 @@ section { scroll-margin-top: 68px; }
   .receive__layout > .product-mockup { width: min(380px,108%); }
   .offer__product { min-height: 280px; }
   .offer__product .product-mockup--compact { width: min(400px,112%); }
+}
+
+@media (max-width: 768px) {
+  .brand::after { content: 'E-book + Audiobook'; }
 }
