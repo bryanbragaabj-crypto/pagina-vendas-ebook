@@ -456,6 +456,24 @@ section { scroll-margin-top: 68px; }
 @media (max-width: 768px) {
   .brand::after { content: 'E-book + Audiobook'; }
 }
+
+/* Refinamentos editoriais da copy — sem alterar a estrutura das seções. */
+.promise blockquote em { color: var(--gold); font-style: normal; }
+.method .section-heading--center > p:last-of-type span { display: block; max-width: 650px; margin: 9px auto 0; }
+.inside__heading > p:not(.eyebrow) { max-width: 500px; margin-top: 24px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.inside__flow,.receive__positioning { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 9px; color: #a9a197; font-size: 12px; font-weight: 600; letter-spacing: .055em; text-transform: uppercase; }
+.inside__flow { justify-content: flex-start; margin-top: 24px; }
+.inside__flow i,.receive__positioning i { color: var(--gold); font-style: normal; }
+.receive__positioning { max-width: 760px; margin: 24px auto 0; }
+.closing__support strong { display: block; margin-top: 8px; color: var(--paper); font-weight: 600; }
+.closing .gold-button { max-width: 620px; }
+
+@media (max-width: 768px) {
+  .hero__description span { margin-top: 7px; font-size: 13px; line-height: 1.48; }
+  .inside__heading > p:not(.eyebrow) { font-size: 16px; }
+  .inside__flow,.receive__positioning { gap: 7px; font-size: 10px; }
+  .receive__positioning { margin-top: 18px; }
+}
 .trustbar { border-block: 1px solid rgba(223,169,54,.11); background: #090806; }
 .trustbar__inner { min-height: 78px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: center; }
 .trustbar__inner > span { min-height: 42px; padding: 0 28px; display: flex; align-items: center; justify-content: center; gap: 13px; border-left: 1px solid rgba(255,255,255,.07); color: #c4bcb1; font-size: 15px; font-weight: 500; }

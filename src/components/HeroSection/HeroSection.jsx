@@ -13,7 +13,7 @@ export default function Hero() {
         <div className="hero__content">
           <div className="hero__labels"><p className="eyebrow eyebrow--line">Alta performance comercial</p></div>
           <h1><span>Aprenda a vender</span><strong>sem precisar<br />convencer.</strong></h1>
-          <p className="hero__description">Descubra a Arquitetura Invisível das Vendas e os 10 passos que conduzem uma negociação da primeira abordagem ao fechamento.</p>
+          <p className="hero__description">Aprenda a conduzir uma venda do primeiro contato à decisão — sem pressão, improviso ou frases prontas.<span>Conheça a Arquitetura Invisível do Fechamento: um método estruturado em 10 passos para compreender o cliente, construir valor, reduzir resistências e tornar o fechamento uma consequência natural.</span></p>
           <div className="hero__benefits"><span>✓ Método prático</span><span>✓ Aplicação B2B e B2C</span><span>✓ Audiobook como bônus</span></div>
           <div className="hero__authorial"><strong>100% AUTORAL</strong><span>Obra original. Não gerada por inteligência artificial.</span></div>
         </div>

@@ -8,6 +8,7 @@
 .hero h1 span, .hero h1 strong { display: block; }
 .hero h1 strong { color: #e2aa3b; font: inherit; text-shadow: 0 2px #67400f; }
 .hero__description { max-width: 580px; color: #aaa59d; font-size: 17px; line-height: 1.7; }
+.hero__description span { display: block; margin-top: 9px; color: #8f887f; font-size: 14px; line-height: 1.55; }
 .hero__visual { position: relative; grid-area: visual; height: 680px; display: flex; align-items: center; justify-content: center; min-width: 0; }
 .hero__visual::after { content: ''; position: absolute; z-index: 1; bottom: 28px; width: 100%; height: 125px; background: radial-gradient(ellipse,#000 15%,transparent 68%); filter: blur(13px); opacity: .72; }
 .hero__halo { position: absolute; width: 590px; height: 590px; max-width: 100%; border-radius: 50%; background: radial-gradient(circle,rgba(226,166,71,.28),rgba(169,102,21,.12) 40%,transparent 70%); filter: blur(13px); }

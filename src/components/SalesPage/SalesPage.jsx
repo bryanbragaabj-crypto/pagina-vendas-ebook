@@ -5,7 +5,7 @@ import { faqItems, product, steps, trackCtaClick } from '../../data/siteData.js'
 const benefits = [
   ['01', 'message', 'Menos discurso', 'Argumentos em excesso geram dúvida. Clareza e perguntas melhores geram confiança.'],
   ['02', 'search', 'Mais diagnóstico', 'Você deixa de apresentar soluções genéricas e passa a falar sobre o que realmente importa.'],
-  ['03', 'check', 'Decisão sem pressão', 'O cliente não se sente vencido. Ele percebe que fez uma escolha segura e consciente.'],
+  ['03', 'check', 'Decisão sem pressão', 'Influenciar não é pressionar. É ajudar o cliente a enxergar com clareza a decisão que faz sentido para ele.'],
 ]
 
 const audiences = [
@@ -60,18 +60,18 @@ export function ProblemSection() {
 
 export function PerspectiveAndBenefits() {
   return <><section className="principles section"><div className="shell principles__grid">{benefits.map(([number, icon, title, text], index) => <article key={title} className={`principle principle--${index + 1}`}><b>{number}</b><Icon name={icon} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-  <section className="promise section"><div className="shell promise__inner"><span className="promise__quote" aria-hidden="true">“</span><p className="eyebrow">A mudança de perspectiva</p><blockquote>“O verdadeiro mestre das vendas não é quem convence alguém a comprar. É quem ajuda o cliente a perceber que comprar é a melhor decisão.”</blockquote><p>Conheça a <strong>Arquitetura do Fechamento Invisível</strong>: uma sequência de princípios que conduz a conversa do primeiro contato até a decisão, com ética, naturalidade e método.</p><i className="promise__signature" /></div></section></>
+  <section className="promise section"><div className="shell promise__inner"><span className="promise__quote" aria-hidden="true">“</span><p className="eyebrow">A mudança de perspectiva</p><blockquote>Você não precisa falar melhor.<br /><em>Precisa aprender a conduzir melhor.</em></blockquote><p>Quanto mais você tenta convencer, maior pode se tornar a resistência. O cliente não quer sentir que foi vendido. Ele quer sentir que tomou uma boa decisão.</p><i className="promise__signature" /></div></section></>
 }
 
 export function MethodSection() {
-  return <section className="method section" id="metodo"><div className="shell"><div className="section-heading section-heading--center"><p className="eyebrow">O método completo</p><h2>10 passos para transformar<br /><em>conversa em decisão.</em></h2><p>Uma jornada lógica, do primeiro contato ao fechamento, criada para vendas B2B, B2C, serviços e negociações do dia a dia.</p><div className="method-flow" aria-label="Progressão do método"><span>Primeiro contato</span><i /><span>Diagnóstico</span><i /><span>Valor</span><i /><span>Decisão</span><i /><span>Relacionamento</span></div></div>
+  return <section className="method section" id="metodo"><div className="shell"><div className="section-heading section-heading--center"><p className="eyebrow">O método completo</p><h2>Não são 10 frases para decorar.<br /><em>É uma arquitetura para entender.</em></h2><p>Cada etapa possui uma função. Cada pergunta tem um objetivo. Cada técnica prepara a próxima.<span>Até que fechar deixe de ser um momento de pressão e passe a ser consequência daquilo que foi construído durante a conversa.</span></p><div className="method-flow" aria-label="Progressão do método"><span>Compreender</span><i /><span>Construir valor</span><i /><span>Reduzir incertezas</span><i /><span>Conduzir</span><i /><span>Decisão</span></div></div>
     <div className="timeline">{steps.map(([title,text],index) => <article className="timeline__item" key={title}><span className="timeline__number">{String(index+1).padStart(2,'0')}</span><div className="timeline__content"><h3>{title}</h3><p>{text}</p></div></article>)}</div>
   </div></section>
 }
 
 export function FoundationsSection() {
-  return <section className="inside section"><div className="shell inside__grid"><div className="inside__heading"><p className="eyebrow">Muito além do fechamento</p><h2>Os fundamentos que sustentam cada venda.</h2><p>Comportamento humano, comunicação e aplicação prática para você saber o que fazer — e por que funciona.</p></div><div className="inside__items">
-    <article tabIndex="0"><Icon name="spark" /><div><h3>10 gatilhos mentais</h3><p>Reciprocidade, autoridade, prova social, escassez, urgência, contraste e outras combinações utilizadas com ética.</p></div></article>
+  return <section className="inside section"><div className="shell inside__grid"><div className="inside__heading"><p className="eyebrow">Processo, consistência, previsibilidade</p><h2>Pare de depender de sorte, improviso ou talento para vender.</h2><p>Transforme sua forma de vender em um processo que você consegue entender, repetir e aperfeiçoar.</p><div className="inside__flow" aria-label="Processo leva a consistência, que leva a previsibilidade"><span>Processo</span><i>→</i><span>Consistência</span><i>→</i><span>Previsibilidade</span></div></div><div className="inside__items">
+    <article tabIndex="0"><Icon name="spark" /><div><h3>Psicologia dentro do método</h3><p>Gatilhos mentais e princípios de persuasão aplicados dentro de uma arquitetura completa — com contexto, intenção e ética.</p></div></article>
     <article tabIndex="0"><Icon name="check" /><div><h3>Mentalidade de alta performance</h3><p>Uma prática para entrar em cada conversa com mais calma, presença e preparo para ouvir.</p></div></article>
     <article tabIndex="0"><Icon name="arrow" /><div><h3>Indicações consistentes</h3><p>Como transformar clientes satisfeitos em novas oportunidades e construir previsibilidade.</p></div></article>
   </div></div></section>
@@ -139,12 +139,12 @@ export function TestimonialsSection() {
 }
 
 export function ReceiveSection() {
-  const items = [['book','E-book completo'],['spark','Arquitetura Invisível das Vendas'],['check','Método estruturado em 10 passos'],['headphones','Audiobook profissional completo — BÔNUS'],['arrow','Acesso imediato']]
-  return <section className="receive section"><div className="shell"><div className="section-heading section-heading--center"><p className="eyebrow">Seu kit digital</p><h2>Tudo o que você recebe</h2></div><div className="receive__layout"><ProductMockup compact loading="lazy" /><div className="receive__items">{items.map(([icon,text]) => <span key={text}><Icon name={icon} />{text}</span>)}</div></div></div></section>
+  const items = [['book','E-book completo'],['spark','Arquitetura Invisível do Fechamento'],['check','Método estruturado em 10 passos'],['headphones','Audiobook profissional completo — BÔNUS'],['arrow','Acesso imediato']]
+  return <section className="receive section"><div className="shell"><div className="section-heading section-heading--center"><p className="eyebrow">Uma filosofia aplicada à venda</p><h2>Não é um livro de truques para convencer pessoas.<br /><em>É um método para aprender a conduzir decisões.</em></h2><div className="receive__positioning"><span>Compreender melhor</span><i>→</i><span>Comunicar valor</span><i>→</i><span>Reduzir incertezas</span><i>→</i><span>Facilitar decisões</span></div></div><div className="receive__layout"><ProductMockup compact loading="lazy" /><div className="receive__items">{items.map(([icon,text]) => <span key={text}><Icon name={icon} />{text}</span>)}</div></div></div></section>
 }
 
 export function OfferSection() {
-  return <section className="offer section" id="oferta"><div className="shell offer__box"><div className="offer__product"><ProductMockup compact loading="lazy" /><span>E-book + audiobook • acesso digital</span></div><div className="offer__copy"><p className="eyebrow">Você recebe hoje</p><h2>Leve o método completo para suas próximas negociações.</h2><span className="bonus-label">Bônus exclusivo: audiobook profissional completo</span><ul><li>E-book completo</li><li>Arquitetura Invisível das Vendas</li><li>Método estruturado em 10 passos</li><li>Audiobook profissional completo — BÔNUS</li><li>Acesso imediato</li></ul><div className="price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><em>{product.paymentType}</em><b>Economize {product.savings}</b></div><a className="gold-button gold-button--wide" id="checkout" href={product.checkoutUrl} onClick={() => trackCtaClick('offer')}>Garantir meu acesso</a><p className="secure">Acesso digital • pagamento único • garantia de 7 dias</p><p className="offer__included">Você recebe o e-book e o audiobook profissional completo como bônus exclusivo.</p></div></div></section>
+  return <section className="offer section" id="oferta"><div className="shell offer__box"><div className="offer__product"><ProductMockup compact loading="lazy" /><span>E-book + audiobook • acesso digital</span></div><div className="offer__copy"><p className="eyebrow">Você recebe hoje</p><h2>Leve o método completo para suas próximas negociações.</h2><span className="bonus-label">Bônus exclusivo: audiobook profissional completo</span><ul><li>E-book completo</li><li>Arquitetura Invisível do Fechamento</li><li>Método estruturado em 10 passos</li><li>Audiobook profissional completo — BÔNUS</li><li>Acesso imediato</li></ul><div className="price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><em>{product.paymentType}</em><b>Economize {product.savings}</b></div><a className="gold-button gold-button--wide" id="checkout" href={product.checkoutUrl} onClick={() => trackCtaClick('offer')}>Garantir meu acesso</a><p className="secure">Acesso digital • pagamento único • garantia de 7 dias</p><p className="offer__included">Você recebe o e-book e o audiobook profissional completo como bônus exclusivo.</p></div></div></section>
 }
 
 export function GuaranteeSection() {
@@ -157,7 +157,7 @@ export function FAQSection() {
 }
 
 export function FinalCTA() {
-  return <section className="closing section"><div className="shell"><p className="eyebrow">Sua próxima negociação começa aqui</p><h2>A venda deixa de ser uma batalha<br />e passa a ser <em>uma consequência.</em></h2><p className="closing__support">Leve o e-book, receba o audiobook profissional completo e tenha 7 dias para avaliar o conteúdo com tranquilidade.</p><a className="gold-button" href={product.checkoutUrl} onClick={() => trackCtaClick('final')}>Quero dominar a arte de vender</a><small>E-book + audiobook • pagamento único • garantia de 7 dias</small></div></section>
+  return <section className="closing section"><div className="shell"><p className="eyebrow">Sua próxima negociação começa aqui</p><h2>Você pode continuar tentando convencer.<br /><em>Ou pode aprender a construir a decisão.</em></h2><p className="closing__support">O Fechamento Invisível não é uma frase pronta. É uma arquitetura.<strong>Comece agora a construir a sua.</strong></p><a className="gold-button" href={product.checkoutUrl} onClick={() => trackCtaClick('final')}>Quero me tornar um vendedor de alta performance</a><small>E-book + audiobook • pagamento único • garantia de 7 dias</small></div></section>
 }
 
 export function CommercialFooter() {
