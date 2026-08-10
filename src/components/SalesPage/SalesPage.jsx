@@ -190,7 +190,25 @@ export function ReceiveSection() {
 }
 
 export function OfferSection() {
-  return <section className="offer section" id="oferta"><div className="shell"><div className="offer__value-statement"><p>Você não está comprando apenas informação sobre vendas.</p><strong>Está investindo em uma habilidade que pode acompanhar você por toda a sua vida profissional.</strong></div><div className="offer__box"><div className="offer__product"><ProductMockup compact loading="lazy" /><span>E-book + audiobook • acesso digital</span></div><div className="offer__copy"><p className="eyebrow">Comece a aplicar</p><h2>Quanto vale aprender uma habilidade que você poderá usar em milhares de conversas ao longo da sua vida?</h2><div className="price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><em>{product.paymentType}</em><b>Economize {product.savings}</b></div><a className="gold-button gold-button--wide" id="checkout" href={product.checkoutUrl} onClick={() => trackCtaClick('offer')}>Quero me tornar um vendedor de alta performance</a><p className="secure">Acesso digital • pagamento único • garantia de 7 dias</p></div></div></div></section>
+  const [interestCount, setInterestCount] = useState(() => {
+    const savedCount = Number.parseInt(localStorage.getItem('sales-interest-count') || '', 10)
+    return Number.isFinite(savedCount) && savedCount >= 980 ? savedCount : 980
+  })
+
+  useEffect(() => {
+    const incrementInterest = () => {
+      setInterestCount((currentCount) => {
+        const nextCount = currentCount + 1
+        localStorage.setItem('sales-interest-count', String(nextCount))
+        return nextCount
+      })
+    }
+
+    window.addEventListener('sales:cta-click', incrementInterest)
+    return () => window.removeEventListener('sales:cta-click', incrementInterest)
+  }, [])
+
+  return <section className="offer section" id="oferta"><div className="shell"><div className="offer__value-statement"><p>Você não está comprando apenas informação sobre vendas.</p><strong>Está investindo em uma habilidade que pode acompanhar você por toda a sua vida profissional.</strong></div><div className="offer__box"><div className="offer__product"><ProductMockup compact loading="lazy" /><span>E-book + audiobook • acesso digital</span></div><div className="offer__copy"><p className="eyebrow">Comece a aplicar</p><h2>Quanto vale aprender uma habilidade que você poderá usar em milhares de conversas ao longo da sua vida?</h2><div className="price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><em>{product.paymentType}</em><b>Economize {product.savings}</b></div><a className="gold-button gold-button--wide" id="checkout" href={product.checkoutUrl} onClick={() => trackCtaClick('offer')}>Quero me tornar um vendedor de alta performance</a><p className="offer__interest" aria-live="polite"><Icon name="users" /><span><strong>+ de {interestCount.toLocaleString('pt-BR')} pessoas</strong> demonstraram interesse neste guia.</span></p><p className="secure">Acesso digital • pagamento único • garantia de 7 dias</p></div></div></div></section>
 }
 
 export function GuaranteeSection() {
