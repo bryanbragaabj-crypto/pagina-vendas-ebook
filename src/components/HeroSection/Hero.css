@@ -20,7 +20,7 @@
 .hero__price b { padding: 5px 8px; border: 1px solid rgba(223,169,54,.3); border-radius: 8px; color: #dca743; font-size: 13px; font-weight: 600; }
 .hero__price em { flex-basis: 100%; color: #8e877e; font-size: 13px; font-style: normal; text-transform: uppercase; }
 .hero .gold-button { width: min(410px,100%); }
-.hero__interest { width: min(440px,100%); justify-content: flex-start; }
+.hero__interest { width: min(410px,100%); justify-content: center; }
 .hero__microcopy { width: min(410px,100%); margin-top: 13px; color: #8f887f; font-size: 14px; line-height: 1.5; text-align: center; }
 .hero__scroll { position: absolute; bottom: 24px; left: 50%; display: flex; align-items: center; gap: 10px; transform: translateX(-50%); color: #777168; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .hero__scroll span { width: 1px; height: 24px; background: linear-gradient(var(--gold),transparent); }
