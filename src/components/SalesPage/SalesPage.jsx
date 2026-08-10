@@ -194,7 +194,7 @@ export function OfferSection() {
 }
 
 export function GuaranteeSection() {
-  return <section className="guarantee section"><div className="shell guarantee__grid"><div className="guarantee__mark"><Icon name="shield" /><strong>7</strong><span>dias</span></div><div><p className="eyebrow">Compra protegida</p><h2>Você tem 7 dias para decidir com tranquilidade.</h2><p>Se você adquirir o material e perceber que ele não faz sentido para você, pode solicitar a devolução total do valor em até 7 dias.</p><strong className="guarantee__note">Sem pressão. A decisão continua sendo sua.</strong>{/* TODO: inserir o link real da política de reembolso quando for fornecido. */}</div></div></section>
+  return <section className="guarantee section"><div className="shell guarantee__grid"><div className="guarantee__mark"><strong>7</strong><span>dias</span></div><div><p className="eyebrow">Compra protegida</p><h2>Você tem 7 dias para decidir com tranquilidade.</h2><p>Se você adquirir o material e perceber que ele não faz sentido para você, pode solicitar a devolução total do valor em até 7 dias.</p><strong className="guarantee__note">Sem pressão. A decisão continua sendo sua.</strong>{/* TODO: inserir o link real da política de reembolso quando for fornecido. */}</div></div></section>
 }
 
 export function FAQSection() {
