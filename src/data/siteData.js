@@ -1,4 +1,21 @@
 const kiwifyCheckoutUrl = import.meta.env.VITE_KIWIFY_CHECKOUT_URL?.trim() || ''
+const interestStorageKey = 'sales-interest-count'
+const initialInterestCount = 980
+
+const readInterestCount = () => {
+  if (typeof window === 'undefined') return initialInterestCount
+  const savedCount = Number.parseInt(window.localStorage.getItem(interestStorageKey) || '', 10)
+  return Number.isFinite(savedCount) && savedCount >= initialInterestCount ? savedCount : initialInterestCount
+}
+
+let interestCount = readInterestCount()
+
+export const getInterestCount = () => interestCount
+export const getServerInterestCount = () => initialInterestCount
+export const subscribeInterestCount = (listener) => {
+  window.addEventListener('sales:interest-change', listener)
+  return () => window.removeEventListener('sales:interest-change', listener)
+}
 
 export const product = {
   name: 'Torne-se o Maior Vendedor de Todos os Tempos',
@@ -14,6 +31,9 @@ export const product = {
 }
 
 export const trackCtaClick = (location) => {
+  interestCount += 1
+  window.localStorage.setItem(interestStorageKey, String(interestCount))
+  window.dispatchEvent(new CustomEvent('sales:interest-change'))
   // TODO: integrar aqui a ferramenta de analytics quando ela for definida.
   window.dispatchEvent(new CustomEvent('sales:cta-click', { detail: { location } }))
 }

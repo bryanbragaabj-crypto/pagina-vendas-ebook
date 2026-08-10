@@ -1,5 +1,6 @@
 import mockupEbook from '../../assets/mockup-ebook-v2.png'
 import { product, trackCtaClick } from '../../data/siteData.js'
+import InterestProof from '../InterestProof/InterestProof.jsx'
 import './Hero.css'
 
 export function ProductMockup({ compact = false, loading = 'eager' }) {
@@ -21,6 +22,7 @@ export default function Hero() {
         <div className="hero__purchase">
           <div className="hero__price"><span>De <s>{product.oldPrice}</s> por</span><strong>{product.currentPrice}</strong><b>Economize {product.savings}</b><em>{product.paymentType}</em></div>
           <a className="gold-button" href="#oferta" onClick={() => trackCtaClick('hero')}>Quero dominar a arte de vender</a>
+          <InterestProof className="hero__interest" />
           <p className="hero__microcopy">E-book + audiobook • acesso digital • garantia de 7 dias</p>
         </div>
       </div>
